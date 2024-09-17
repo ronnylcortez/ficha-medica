@@ -1,5 +1,6 @@
 // require(express): se importa el módulo desde node_modules y se asigna a la constante express
 const express = require('express');
+const path = require('path');
 const cors = require('cors');
 // la constante app es el objeto principal para configurar el servidor
 const app = express();

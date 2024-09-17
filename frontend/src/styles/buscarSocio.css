@@ -1,0 +1,13 @@
+.hidden-input {
+    position: absolute; /* Oculta el campo de entrada fuera del área visible */
+    width: 1px; /* Reduce el ancho a 1 píxel */
+    height: 1px; /* Reduce la altura a 1 píxel */
+    opacity: 0; /* Hace el campo completamente transparente */
+    border: none; /* Elimina el borde */
+    clip: rect(0, 0, 0, 0); /* Oculta el campo fuera del área visible */
+    overflow: hidden; /* Elimina el desbordamiento del campo */
+}
+
+.socio-list {
+    list-style-type: none;
+}

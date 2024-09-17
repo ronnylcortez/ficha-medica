@@ -1,12 +1,12 @@
 import './App.css';
-import Socio from './components/Socio';
+import InfoSocio from './components/InfoSocio';
+import BuscarSocio from './components/BuscarSocio';
 
 function App() {
 
-  const numTarjeta = '9681861 147 48069'; // Ejemplo de número de tarjeta
   return (
     <div className="App">
-      <Socio numTarjeta={numTarjeta}/>
+      <BuscarSocio />
     </div>
   );
 }

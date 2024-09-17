@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from  'axios';
 
-function Socio( {numTarjeta} ) {
+function InfoSocio( {numTarjeta} ) {
 
     const [socio, setSocio] = useState(null);
     const [error, setError] = useState(null);
@@ -9,7 +9,7 @@ function Socio( {numTarjeta} ) {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await axios.get(`http://localhost:3001/socios/tarjeta/${numTarjeta}`);
+                const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/socios/tarjeta/${numTarjeta}`);
                 setSocio(response.data);
             } catch (error) {
                 setError(error.response ? error.response.data : error.message);
@@ -25,12 +25,11 @@ function Socio( {numTarjeta} ) {
     return (
         <div>
             <h1>BIENVENIDO</h1>
-            <p>Nombres: {socio.nombres}</p>
-            <p>Nombres: {socio.cedula}</p>
+            <p>{socio.cedula}</p>
             <h3>Círculo Militar</h3>
             <h3>¡Mucho más que un buen club!</h3>
         </div>
     );
 };
 
-export default Socio;
+export default InfoSocio;

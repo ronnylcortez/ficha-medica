@@ -10,4 +10,7 @@ router.get('/:cedula', socioController.getSocioById);
 
 router.get('/tarjeta/:numTarjeta', socioController.getSocioByNumTarjeta);
 
+
+
+
 module.exports = router;
