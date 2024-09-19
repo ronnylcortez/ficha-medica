@@ -6,7 +6,7 @@ const socioController = require('../controllers/socioController');
 
 router.get('/', socioController.getAllSocios);
 
-router.get('/:cedula', socioController.getSocioById);
+router.get('/:cedula', socioController.getSocioByCedula);
 
 router.get('/tarjeta/:numTarjeta', socioController.getSocioByNumTarjeta);
 

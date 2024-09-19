@@ -21,7 +21,7 @@ const getSocioByCedula = async (cedula) => {
         const result = await pool.request()
             // tercer parámetro es el valor que se asigna a 'cedula'
             .input('cedula', sql.VarChar, cedula)
-            .query('SELECT nombres, cedula, fuerza, edad, grado, foto FROM socios WHERE cedula = @cedula');
+            .query('SELECT nombres, cedula, fuerza, edad, grado, foto, direccion, celular FROM socios WHERE cedula = @cedula');
         // común en desarrollo extraer el primer registro si esperamos solo uno
         return result.recordset[0];
     } catch (error) {
@@ -36,7 +36,7 @@ const getSocioByNumTarjeta = async (numTarjeta) => {
         const pool = await poolPromise;
         const result = await pool.request()
             .input('numTarjeta', sql.VarChar, numTarjeta)
-            .query('SELECT nombres, cedula, fuerza, edad, grado, foto FROM socios WHERE num_tarjeta=@numTarjeta');
+            .query('SELECT nombres, cedula, fuerza, edad, grado, foto, direccion, celular FROM socios WHERE num_tarjeta=@numTarjeta');
         return result.recordset[0];
     } catch (error) {
         console.error('Error al obtener socio por tarjeta:', error);

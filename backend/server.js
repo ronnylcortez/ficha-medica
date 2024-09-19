@@ -5,6 +5,7 @@ const cors = require('cors');
 // la constante app es el objeto principal para configurar el servidor
 const app = express();
 const socioRoutes = require('./routes/socioRoutes');
+const fichaMedicaRoutes = require('./routes/fichaMedicaRoutes');
 const port = 3001;
 
 // Configura CORS
@@ -20,6 +21,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/socios', socioRoutes);
+
+app.use('/api', fichaMedicaRoutes);
 
 // Iniciar el servidor
 app.listen(port, () => {
