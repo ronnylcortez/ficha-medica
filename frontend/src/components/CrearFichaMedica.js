@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import '../styles/crearFichaMedica.css'; // Asegúrate de que la ruta sea correcta
 
 const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
   const [tipoSangre, setTipoSangre] = useState('');
@@ -74,7 +75,6 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/ficha`, {
         cedula,
@@ -103,158 +103,190 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
   };
 
   return (
-    <div>
-      <h3>Crear Ficha Médica</h3>
+    <div className="crear-ficha-medica-container">
+      <h3 className="titulo-ficha">Crear Ficha Médica</h3>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor='tipo_sangre'>Tipo de Sangre:</label>
-          <input
-            type='text'
-            id='tipo_sangre'
-            value={tipoSangre}
-            onChange={handleChange}
-            placeholder='Ingrese tipo de sangre'
-          />
-        </div>
+        <section className="seccion">
+          <h4 className="subtitulo-seccion">Información Básica</h4>
+          <div className="campo">
+            <label htmlFor='tipo_sangre' className="label-campo">Tipo de Sangre:</label>
+            <input
+              type='text'
+              id='tipo_sangre'
+              value={tipoSangre}
+              onChange={handleChange}
+              placeholder='Ingrese tipo de sangre'
+              className="input-campo"
+            />
+          </div>
 
-        <div>
-          <label htmlFor='peso'>Peso (kg):</label>
-          <input
-            type='number'
-            id='peso'
-            value={peso}
-            onChange={handleChange}
-            placeholder='Ingrese peso'
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='peso' className="label-campo">Peso (kg):</label>
+            <input
+              type='number'
+              id='peso'
+              value={peso}
+              onChange={handleChange}
+              placeholder='Ingrese peso'
+              className="input-campo"
+            />
+          </div>
 
-        <div>
-          <label htmlFor='altura'>Altura (m):</label>
-          <input
-            type='number'
-            id='altura'
-            value={altura}
-            onChange={handleChange}
-            placeholder='Ingrese altura'
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='altura' className="label-campo">Altura (m):</label>
+            <input
+              type='number'
+              id='altura'
+              value={altura}
+              onChange={handleChange}
+              placeholder='Ingrese altura'
+              className="input-campo"
+            />
+          </div>
 
-        <div>
-          <label htmlFor='presion_arterial'>Presión Arterial:</label>
-          <input
-            type='text'
-            id='presion_arterial'
-            value={presionArterial}
-            onChange={handleChange}
-            placeholder='Ingrese presión arterial'
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='presion_arterial' className="label-campo">Presión Arterial:</label>
+            <input
+              type='text'
+              id='presion_arterial'
+              value={presionArterial}
+              onChange={handleChange}
+              placeholder='Ingrese presión arterial'
+              className="input-campo"
+            />
+          </div>
+        </section>
 
-        <div>
-          <label htmlFor='alergias'>Alergias:</label>
-          <input
-            type='text'
-            id='alergias'
-            value={alergias}
-            onChange={handleChange}
-            placeholder='Ingrese alergias'
-          />
-        </div>
+        <section className="seccion">
+          <h4 className="subtitulo-seccion">Alergias y Medicamentos</h4>
+          <div className="campo">
+            <label htmlFor='alergias' className="label-campo">Alergias:</label>
+            <input
+              type='text'
+              id='alergias'
+              value={alergias}
+              onChange={handleChange}
+              placeholder='Ingrese alergias'
+              className="input-campo"
+            />
+          </div>
 
-        <div>
-          <label htmlFor='medicamentos'>Medicamentos:</label>
-          <input
-            type='text'
-            id='medicamentos'
-            value={medicamentos}
-            onChange={handleChange}
-            placeholder='Ingrese medicamentos'
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='medicamentos' className="label-campo">Medicamentos:</label>
+            <input
+              type='text'
+              id='medicamentos'
+              value={medicamentos}
+              onChange={handleChange}
+              placeholder='Ingrese medicamentos'
+              className="input-campo"
+            />
+          </div>
+        </section>
 
-        <div>
-          <label htmlFor='enfermedades'>Enfermedades:</label>
-          <input
-            type='text'
-            id='enfermedades'
-            value={enfermedades}
-            onChange={handleChange}
-            placeholder='Ingrese enfermedades'
-          />
-        </div>
+        <section className="seccion">
+          <h4 className="subtitulo-seccion">Historial Médico</h4>
+          <div className="campo">
+            <label htmlFor='enfermedades' className="label-campo">Enfermedades:</label>
+            <input
+              type='text'
+              id='enfermedades'
+              value={enfermedades}
+              onChange={handleChange}
+              placeholder='Ingrese enfermedades'
+              className="input-campo"
+            />
+          </div>
 
-        <div>
-          <label htmlFor='discapacidad_fisica'>¿Discapacidad Física?:</label>
-          <input
-            type='checkbox'
-            id='discapacidad_fisica'
-            checked={discapacidadFisica}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='observaciones' className="label-campo">Observaciones:</label>
+            <input
+              type='text'
+              id='observaciones'
+              value={observaciones}
+              onChange={handleChange}
+              placeholder='Ingrese observaciones'
+              className="input-campo"
+            />
+          </div>
+        </section>
 
-        <div>
-          <label htmlFor='atencion_especial'>¿Atención Especial?:</label>
-          <input
-            type='checkbox'
-            id='atencion_especial'
-            checked={atencionEspecial}
-            onChange={handleChange}
-          />
-        </div>
+        <section className="seccion">
+          <h4 className="subtitulo-seccion">Condiciones Especiales</h4>
+          <div className="campo">
+            <label htmlFor='discapacidad_fisica' className="label-campo">¿Discapacidad Física?:</label>
+            <input
+              type='checkbox'
+              id='discapacidad_fisica'
+              checked={discapacidadFisica}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor='calendario_vacunacion_completo'>¿Calendario de Vacunación Completo?:</label>
-          <input
-            type='checkbox'
-            id='calendario_vacunacion_completo'
-            checked={calendarioVacunacionCompleto}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='atencion_especial' className="label-campo">¿Atención Especial?:</label>
+            <input
+              type='checkbox'
+              id='atencion_especial'
+              checked={atencionEspecial}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor='diabetes'>¿Diabetes?:</label>
-          <input
-            type='checkbox'
-            id='diabetes'
-            checked={diabetes}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='calendario_vacunacion_completo' className="label-campo">¿Calendario de Vacunación Completo?:</label>
+            <input
+              type='checkbox'
+              id='calendario_vacunacion_completo'
+              checked={calendarioVacunacionCompleto}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor='hipertension'>¿Hipertensión?:</label>
-          <input
-            type='checkbox'
-            id='hipertension'
-            checked={hipertension}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='diabetes' className="label-campo">¿Diabetes?:</label>
+            <input
+              type='checkbox'
+              id='diabetes'
+              checked={diabetes}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor='fracturas'>¿Fracturas?:</label>
-          <input
-            type='checkbox'
-            id='fracturas'
-            checked={fracturas}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='hipertension' className="label-campo">¿Hipertensión?:</label>
+            <input
+              type='checkbox'
+              id='hipertension'
+              checked={hipertension}
+              onChange={handleChange}
+            />
+          </div>
 
-        <div>
-          <label htmlFor='hernias'>¿Hernias?:</label>
-          <input
-            type='checkbox'
-            id='hernias'
-            checked={hernias}
-            onChange={handleChange}
-          />
-        </div>
+          <div className="campo">
+            <label htmlFor='fracturas' className="label-campo">¿Fracturas?:</label>
+            <input
+              type='checkbox'
+              id='fracturas'
+              checked={fracturas}
+              onChange={handleChange}
+            />
+          </div>
 
-        <button type='submit'>Guardar</button>
-        {error && <p>{error}</p>}
+          <div className="campo">
+            <label htmlFor='hernias' className="label-campo">¿Hernias?:</label>
+            <input
+              className='input-checkbox'
+              type='checkbox'
+              id='hernias'
+              checked={hernias}
+              onChange={handleChange}
+            />
+          </div>
+        </section>
+
+        <button type='submit' className="btn-enviar">Enviar</button>
+        {error && <p className="error">{error}</p>}
       </form>
     </div>
   );

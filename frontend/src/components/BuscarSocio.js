@@ -1,8 +1,8 @@
-
-import '../styles/buscarSocio.css'
+import '../styles/buscarSocio.css';
 import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import CrearFichaMedica from './CrearFichaMedica'; // Asegúrate de que la ruta sea correcta
+import FichaMedica from './FichaMedica';
 
 const BuscarSocio = () => {
   const [numTarjeta, setNumTarjeta] = useState('');
@@ -12,8 +12,8 @@ const BuscarSocio = () => {
   const [inputFocused, setInputFocused] = useState(false);
   const [searchType, setSearchType] = useState(''); // Estado para saber si es tarjeta o cédula
   const [showCreateFicha, setShowCreateFicha] = useState(false); // Estado para mostrar el formulario de creación de ficha médica
-  const [showConfirmCreate, setShowConfirmCreate] = useState(false); // Estado para mostrar la confirmación de creación de ficha médica
   const inputRef = useRef(null);
+  const [fichaMedica, setFichaMedica] = useState(null); // Estado para la ficha médica
 
   const handleInputChange = (e) => {
     if (searchType === 'cedula') {
@@ -26,10 +26,12 @@ const BuscarSocio = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSocio(null);
+    setFichaMedica(null); // Reseteamos la ficha médica
     setError(null);
-    setShowConfirmCreate(false); // Oculta el diálogo de confirmación
+    setShowCreateFicha(false);
 
     try {
+      // Realizamos la solicitud para obtener el socio
       let response;
       if (searchType === 'tarjeta' && numTarjeta) {
         response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/socios/tarjeta/${numTarjeta}`);
@@ -42,19 +44,25 @@ const BuscarSocio = () => {
         return;
       }
 
-      setSocio(response.data);
+      const socioData = response.data;
+      setSocio(socioData);
 
-      // Verifica si el socio tiene una ficha médica
-      if (!response.data.fichaMedica) {
-        // Muestra el diálogo de confirmación
-        const confirmCreate = window.confirm('El socio no tiene una ficha médica. ¿Desea crear una nueva?');
-        if (confirmCreate) {
-          setShowCreateFicha(true);
+      // Ahora verificamos si tiene una ficha médica
+      try {
+        const fichaResponse = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/ficha/${cedula}`);
+        setFichaMedica(fichaResponse.data); // Si la ficha médica existe, la guardamos en el estado
+        console.log(fichaMedica);
+      } catch (fichaError) {
+        if (fichaError.response && fichaError.response.status === 404) {
+          // Preguntamos al usuario si desea crear una nueva ficha médica
+          const confirmCreate = window.confirm('El socio no tiene una ficha médica. ¿Desea crear una nueva?');
+          if (confirmCreate) {
+            setShowCreateFicha(true);
+          }
         } else {
-          setShowCreateFicha(false);
+          console.error('Error al obtener la ficha médica:', fichaError);
+          setError('Error al obtener la ficha médica');
         }
-      } else {
-        setShowCreateFicha(false);
       }
 
       if (inputRef.current) {
@@ -72,7 +80,6 @@ const BuscarSocio = () => {
     setSocio(null);
     setError(null);
     setShowCreateFicha(false);
-    setShowConfirmCreate(false);
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -140,25 +147,14 @@ const BuscarSocio = () => {
         {searchType === 'cedula' && <button type="submit">Buscar</button>}
       </form>
 
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
 
       {socio && showCreateFicha && (
-        <CrearFichaMedica cedula={cedula} setShowCreateFicha={setShowCreateFicha} />
+        <CrearFichaMedica cedula={socio.cedula} setShowCreateFicha={setShowCreateFicha} />
       )}
 
-      {socio && socio.fichaMedica && (
-        <div>
-          <h3>FICHA MÉDICA</h3>
-          <ul className='socio-list'>
-            <li>Nombres: {socio.nombres}</li>
-            <li>C. I.: {socio.cedula}</li>
-            <li>Edad: {socio.edad}</li>
-            <li>Grado: {socio.grado}</li>
-            <li>Fuerza: {socio.fuerza}</li>
-            <li>Dirección: {socio.direccion}</li>
-            <li>Teléfono: {socio.celular}</li>
-          </ul>
-        </div>
+      {socio && fichaMedica && (
+        <FichaMedica fichaMedica={fichaMedica} socio={socio} />
       )}
     </div>
   );

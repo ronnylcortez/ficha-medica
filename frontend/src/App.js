@@ -8,7 +8,7 @@ function App() {
     <Router>
     <div className="App">
       <header>
-        <h1>Aplicación de Gestión de Socios</h1>
+        <h1>Círculo Militar</h1>
       </header>
       <main>
         <Routes>
@@ -17,7 +17,6 @@ function App() {
         </Routes>
       </main>
       <footer>
-        <p>&copy; 2024 Tu Empresa</p>
       </footer>
     </div>
   </Router>

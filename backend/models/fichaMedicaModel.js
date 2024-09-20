@@ -1,6 +1,20 @@
 const sql = require('mssql');
 const { poolPromise } = require('../config/db');
 
+const getFichaMedicaByCedula = async (cedula) => {
+  try {
+    const pool = await poolPromise;
+    const result = await pool.request()
+      .input('cedula', sql.VarChar, cedula)
+      .query('SELECT * FROM FichaMedica WHERE cedula = @cedula');
+    return result.recordset[0];
+  } catch (error) {
+    console.error('Error obteniendo la ficha médica: ', error);
+    throw error;
+  }
+};
+
+
 const crearFichaMedica = async (data) => {
 
   // Asegúrate de que la cédula no sea undefined o null
@@ -62,5 +76,6 @@ const crearFichaMedica = async (data) => {
 };
 
 module.exports = {
+  getFichaMedicaByCedula,
   crearFichaMedica
 };
