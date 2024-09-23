@@ -33,6 +33,7 @@ const BuscarSocio = () => {
     try {
       // Realizamos la solicitud para obtener el socio
       let response;
+      /*
       if (searchType === 'tarjeta' && numTarjeta) {
         response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/socios/tarjeta/${numTarjeta}`);
         setNumTarjeta('');
@@ -43,6 +44,16 @@ const BuscarSocio = () => {
         setError('Por favor, ingrese un número de tarjeta o cédula.');
         return;
       }
+      */
+      
+      if (searchType === 'cedula' && cedula) {
+        response = await axios.get (`${process.env.REACT_APP_BACKEND_URL}/socios/${cedula}`);
+        setCedula('');
+      } else {
+        setError('Por favor, ingrese un número de cédula');
+      }
+
+
 
       const socioData = response.data;
       setSocio(socioData);
@@ -102,17 +113,21 @@ const BuscarSocio = () => {
 
   return (
     <div>
+      
       <div>
+      { /*
         <button type="button" onClick={handleReadButtonClick}>
           Buscar por Tarjeta
         </button>
+           */}
         <button type="button" onClick={handleCedulaButtonClick}>
           Buscar por Cédula
         </button>
       </div>
-
+     
       <form onSubmit={handleSubmit}>
         {/* Campo de entrada para la tarjeta */}
+        {/*}
         {searchType === 'tarjeta' && (
           <div>
             <input
@@ -129,6 +144,7 @@ const BuscarSocio = () => {
             {inputFocused && <p>El campo está activo. Por favor, acérque la tarjeta.</p>}
           </div>
         )}
+          */}
 
         {/* Campo de entrada para la cédula */}
         {searchType === 'cedula' && (
