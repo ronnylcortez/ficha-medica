@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
    res.send('Hello world')
 });
 
-app.use('/socios', socioRoutes);
+app.use('/api', socioRoutes);
 
 app.use('/api', fichaMedicaRoutes);
 

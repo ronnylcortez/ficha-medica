@@ -4,11 +4,11 @@ const socioController = require('../controllers/socioController');
 
 // Rutas para los usuarios
 
-router.get('/', socioController.getAllSocios);
+router.get('/socios', socioController.getAllSocios);
 
-router.get('/:cedula', socioController.getSocioByCedula);
+router.get('/socios/:cedula', socioController.getSocioByCedula);
 
-router.get('/tarjeta/:numTarjeta', socioController.getSocioByNumTarjeta);
+router.get('/socios/tarjeta/:numTarjeta', socioController.getSocioByNumTarjeta);
 
 
 

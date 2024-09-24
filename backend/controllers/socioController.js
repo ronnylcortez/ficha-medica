@@ -21,7 +21,7 @@ exports.getSocioByCedula = async (req, res) => {
       if (socio) {
         res.json(socio);
       } else {
-        res.status(404).send('Socio no encontrado');
+        res.status(404).send('Socio no existe en la base de datos');
       }
     } catch (error) {
       res.status(500).send('Error obteniendo el socio');

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles/crearFichaMedica.css'; // Asegúrate de que la ruta sea correcta
+import '../styles/CrearFichaMedica.css'; // Asegúrate de que la ruta sea correcta
 
 const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
   const [tipoSangre, setTipoSangre] = useState('');
   const [peso, setPeso] = useState('');
   const [altura, setAltura] = useState('');
-  const [presionArterial, setPresionArterial] = useState('');
+  const [diabetes, setDiabetes] = useState(false);
+  const [hipertension, setHipertension] = useState(false);
+  const [fracturas, setFracturas] = useState(false);
+  const [hernias, setHernias] = useState(false);
+  const [convulsiones, setConvulsiones] = useState('');
   const [alergias, setAlergias] = useState('');
   const [medicamentos, setMedicamentos] = useState('');
   const [enfermedades, setEnfermedades] = useState('');
@@ -14,10 +18,10 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
   const [discapacidadFisica, setDiscapacidadFisica] = useState(false);
   const [atencionEspecial, setAtencionEspecial] = useState(false);
   const [calendarioVacunacionCompleto, setCalendarioVacunacionCompleto] = useState(false);
-  const [diabetes, setDiabetes] = useState(false);
-  const [hipertension, setHipertension] = useState(false);
-  const [fracturas, setFracturas] = useState(false);
-  const [hernias, setHernias] = useState(false);
+  const [imc, setImc] = useState('');
+  const [grasaCorporal, setGrasaCorporal] = useState('');
+  const [agua, setAgua] = useState('');
+  const [musculoEsqueletico, setMusculoEsqueletico] = useState('');
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -32,8 +36,20 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
       case 'altura':
         setAltura(value);
         break;
-      case 'presion_arterial':
-        setPresionArterial(value);
+      case 'diabetes':
+        setDiabetes(checked);
+        break;
+      case 'hipertension':
+        setHipertension(checked);
+        break;
+      case 'fracturas':
+        setFracturas(checked);
+        break;
+      case 'hernias':
+        setHernias(checked);
+        break;
+      case 'convulsiones':
+        setConvulsiones(checked);
         break;
       case 'alergias':
         setAlergias(value);
@@ -56,17 +72,17 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
       case 'calendario_vacunacion_completo':
         setCalendarioVacunacionCompleto(checked);
         break;
-      case 'diabetes':
-        setDiabetes(checked);
+      case 'imc':
+        setImc(value);
         break;
-      case 'hipertension':
-        setHipertension(checked);
+      case 'grasa_corporal':
+        setGrasaCorporal(value);
         break;
-      case 'fracturas':
-        setFracturas(checked);
+      case 'agua':
+        setAgua(value);
         break;
-      case 'hernias':
-        setHernias(checked);
+      case 'musculo_esqueletico':
+        setMusculoEsqueletico(value);
         break;
       default:
         break;
@@ -81,7 +97,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
         tipo_sangre: tipoSangre,
         peso,
         altura,
-        presion_arterial: presionArterial,
+        convulsiones,
         alergias,
         medicamentos,
         enfermedades,
@@ -92,7 +108,11 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
         diabetes,
         hipertension,
         fracturas,
-        hernias
+        hernias,
+        imc,
+        grasa_corporal: grasaCorporal,
+        agua,
+        musculo_esqueletico: musculoEsqueletico
       });
       alert('Ficha médica creada exitosamente.');
       setShowCreateFicha(false);
@@ -108,6 +128,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
       <form onSubmit={handleSubmit}>
         <section className="seccion">
           <h4 className="subtitulo-seccion">Información Básica</h4>
+
           <div className="campo">
             <label htmlFor='tipo_sangre' className="label-campo">Tipo de Sangre:</label>
             <input
@@ -115,7 +136,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='tipo_sangre'
               value={tipoSangre}
               onChange={handleChange}
-              placeholder='Ingrese tipo de sangre'
+              placeholder='Ingrese el tipo de sangre'
               className="input-campo"
             />
           </div>
@@ -143,16 +164,60 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               className="input-campo"
             />
           </div>
+        </section>
+
+        <section>
+          <h4 className="subtitulo-seccion">Enfermedades y padecimientos</h4>
+          <div className="campo">
+            <label htmlFor='diabetes' className="label-campo">¿Diabetes?:</label>
+            <input
+              type='checkbox'
+              id='diabetes'
+              checked={diabetes}
+              onChange={handleChange}
+            />
+          </div>
+
 
           <div className="campo">
-            <label htmlFor='presion_arterial' className="label-campo">Presión Arterial:</label>
+            <label htmlFor='hipertension' className="label-campo">¿Hipertensión?:</label>
             <input
-              type='text'
-              id='presion_arterial'
-              value={presionArterial}
+              type='checkbox'
+              id='hipertension'
+              checked={hipertension}
               onChange={handleChange}
-              placeholder='Ingrese presión arterial'
-              className="input-campo"
+            />
+          </div>
+
+          <div className="campo">
+            <label htmlFor='fracturas' className="label-campo">¿Fracturas?:</label>
+            <input
+              type='checkbox'
+              id='fracturas'
+              checked={fracturas}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="campo">
+            <label htmlFor='hernias' className="label-campo">¿Hernias?:</label>
+            <input
+              className='input-checkbox'
+              type='checkbox'
+              id='hernias'
+              checked={hernias}
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="campo">
+            <label className="label-campo">Convulsiones</label>
+            <input
+              className='input-checkbox'
+              type='checkbox'
+              id='convulsiones'
+              checked={convulsiones}
+              onChange={handleChange}
             />
           </div>
         </section>
@@ -243,44 +308,53 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
             />
           </div>
 
+        </section>
+
+        <section>
+          <h4 className="subtitulo-seccion">Informe aplicación móvil</h4>
           <div className="campo">
-            <label htmlFor='diabetes' className="label-campo">¿Diabetes?:</label>
+            <label className="label-campo">IMC:</label>
             <input
-              type='checkbox'
-              id='diabetes'
-              checked={diabetes}
+              type='number'
+              id='imc'
+              value={imc}
               onChange={handleChange}
+              placeholder='Ingrese IMC'
+              className="input-campo"
+            />
+          </div>
+          <div className="campo">
+            <label className="label-campo">Grasa Corporal (%):</label>
+            <input
+              type='number'
+              id='grasa_corporal'
+              value={grasaCorporal}
+              onChange={handleChange}
+              placeholder='Ingrese IMC'
+              className="input-campo"
+            />
+          </div>
+          <div className="campo">
+            <label className="label-campo">Agua (%):</label>
+            <input
+              type='number'
+              id='agua'
+              value={agua}
+              onChange={handleChange}
+              placeholder='Ingrese el porcentaje'              
+              className="input-campo"
             />
           </div>
 
           <div className="campo">
-            <label htmlFor='hipertension' className="label-campo">¿Hipertensión?:</label>
+            <label className="label-campo">Musculo Esqueletico (%):</label>
             <input
-              type='checkbox'
-              id='hipertension'
-              checked={hipertension}
+              type='number'
+              id='musculo_esqueletico'
+              value={musculoEsqueletico}
               onChange={handleChange}
-            />
-          </div>
-
-          <div className="campo">
-            <label htmlFor='fracturas' className="label-campo">¿Fracturas?:</label>
-            <input
-              type='checkbox'
-              id='fracturas'
-              checked={fracturas}
-              onChange={handleChange}
-            />
-          </div>
-
-          <div className="campo">
-            <label htmlFor='hernias' className="label-campo">¿Hernias?:</label>
-            <input
-              className='input-checkbox'
-              type='checkbox'
-              id='hernias'
-              checked={hernias}
-              onChange={handleChange}
+              placeholder='Ingrese el porcentaje'
+              className="input-campo"
             />
           </div>
         </section>

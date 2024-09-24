@@ -1,9 +1,30 @@
-.hidden-input {
-  position: absolute; /* Oculta el campo de entrada fuera del área visible */
-  width: 1px; /* Reduce el ancho a 1 píxel */
-  height: 1px; /* Reduce la altura a 1 píxel */
-  opacity: 0; /* Hace el campo completamente transparente */
-  border: none; /* Elimina el borde */
-  clip: rect(0, 0, 0, 0); /* Oculta el campo fuera del área visible */
-  overflow: hidden; /* Elimina el desbordamiento del campo */
+
+.form__input-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+}
+
+
+.form__input,
+.form__button {
+  margin: 10px;
+  padding: 10px;
+}
+
+.form__button {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  background-color: #0A66C2;
+}
+
+.form__button:hover {
+  background-color: #16437E;
+}
+
+.form__error {
+  text-align: center;
 }
