@@ -147,6 +147,38 @@ const FichaMedica = ({ fichaMedica, socio }) => {
             <div className='ficha-medica__label'>Músculo Esquelético</div>
             <div className='ficha-medica__value'>{fichaMedica.musculo_esqueletico}</div>
           </li>
+          <li className='ficha-medica__item'>
+            <div className='ficha-medica__label'>Óseo</div>
+            <div className='ficha-medica__value'>{fichaMedica.oseo}</div>
+          </li>
+          <li className='ficha-medica__item'>
+            <div className='ficha-medica__label'>Sal Inorgánica</div>
+            <div className='ficha-medica__value'>{fichaMedica.sal_inorganica}</div>
+          </li>
+          <li className='ficha-medica__item'>
+            <div className='ficha-medica__label'>Proteínas</div>
+            <div className='ficha-medica__value'>{fichaMedica.proteinas}</div>
+          </li>
+          <li className='ficha-medica__item'>
+            <div className='ficha-medica__label'>Grasa subcutánea</div>
+            <div className='ficha-medica__value'>{fichaMedica.grasa_subcutanea}</div>
+          </li>
+          <li className='ficha-medica__item'>
+            <div className='ficha-medica__label'>Masa magra</div>
+            <div className='ficha-medica__value'>{fichaMedica.masa_magra}</div>
+          </li>
+          <li className='ficha-medica__item'>
+            <div className='ficha-medica__label'>Somatotipo</div>
+            <div className='ficha-medica__value'>{fichaMedica.somatotipo}</div>
+          </li>
+          <li className='ficha-medica__item'>
+            <div className='ficha-medica__label'>IMB:</div>
+            <div className='ficha-medica__value'>{fichaMedica.imb}</div>
+          </li>
+          <li className='ficha-medica__item'>
+            <div className='ficha-medica__label'>AMR:</div>
+            <div className='ficha-medica__value'>{fichaMedica.amr}</div>
+          </li>
         </ul>
       </div>
     </div>

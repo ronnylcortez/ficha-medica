@@ -1,76 +1,88 @@
-.crear-ficha-medica-container {
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .titulo-ficha {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .seccion {
-    margin-bottom: 20px;
-  }
-  
-  .subtitulo-seccion {
-    margin-bottom: 10px;
-    font-size: 18px;
-  }
-  
-  .campo {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .label-campo {
-    width: 150px; /* Ancho fijo para el label */
-    margin-right: 10px; /* Espacio entre label e input */
-    font-weight: bold;
-  }
-  
-  .input-campo {
-    width: 500px; /* Ancho fijo para el campo de información */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-.input-checkbox {
-    align-items: center;
-    justify-content: center;
+/* Ficha Médica */
+.crear-ficha-medica {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
 }
 
-  .campo.checkbox {
-    justify-content: flex-start; /* Alinea el contenido a la izquierda */
-  }
-  
-  .campo.checkbox label {
-    margin-right: 5px; /* Espacio entre el label y el checkbox */
-    width: 150px; /* Ancho fijo para el label del checkbox */
-  }
-  
-  .btn-submit {
-    padding: 10px 15px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .btn-submit:hover {
-    background-color: #218838;
-  }
-  
-  .error-message {
-    color: red;
-    text-align: center;
-    margin-top: 10px;
-  }
-  
+.crear-ficha-medica__titulo {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.crear-ficha-medica__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.crear-ficha-medica__seccion {
+  margin-bottom: 30px;
+  border-radius: 8px; /* Bordes redondeados para la sección */
+  padding: 10px; /* Espacio interno para la sección */
+  background-color: #F1F1F1; /* Color de fondo suave */
+}
+
+.crear-ficha-medica__subtitulo {
+  padding: 10px;
+  font-size: 1.3em; /* Aumentar el tamaño de fuente */
+  background-color: #0A66C2; /* Color de fondo del subtítulo */
+  color: #FFFFFF;
+}
+
+.crear-ficha-medica__campo {
+  margin-bottom: 15px;
+  display: flex;
+
+}
+
+.crear-ficha-medica__label {
+  margin-bottom: 5px;
+  flex: 0 0 15%;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+.crear-ficha-medica__input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.crear-ficha-medica__checkbox {
+  margin-right: 10px;
+  width: 30px; /* Tamaño del checkbox */
+  height: 30px;
+}
+
+.crear-ficha-medica__btn-enviar {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.crear-ficha-medica__btn {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  background-color: #0A66C2;
+  width: auto;
+  height: 50px;
+}
+.crear-ficha-medica__btn:hover {
+  background-color: #0056b3;
+}
+
+.crear-ficha-medica__error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}

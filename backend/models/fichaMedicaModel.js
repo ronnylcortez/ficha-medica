@@ -36,11 +36,19 @@ const crearFichaMedica = async (data) => {
     diabetes,
     hipertension,
     fracturas,
-    hernias, 
+    hernias,
     imc,
     grasa_corporal,
     agua,
-    musculo_esqueletico
+    musculo_esqueletico,
+    oseo,
+    sal_inorganica,
+    proteinas,
+    grasa_subcutanea,
+    masa_magra,
+    somatotipo,
+    imb,
+    amr
   } = data;
   // Asegúrate de que la cédula no sea undefined o null
   console.log('Cédula:', cedula);
@@ -67,13 +75,22 @@ const crearFichaMedica = async (data) => {
       .input('grasa_corporal', sql.Decimal(3, 2), grasa_corporal)
       .input('agua', sql.Decimal(3, 2), agua)
       .input('musculo_esqueletico', sql.Decimal(3, 2), musculo_esqueletico)
+      .input('oseo', sql.Decimal(3, 2), oseo)
+      .input('sal_inorganica', sql.Decimal(3, 2), sal_inorganica)
+      .input('proteinas', sql.Decimal(3, 2), proteinas)
+      .input('grasa_subcutanea', sql.Decimal(3, 2), grasa_subcutanea)
+      .input('masa_magra', sql.Decimal(3, 2), masa_magra)
+      .input('somatotipo', sql.NVarChar, somatotipo)
+      .input('imb', sql.Decimal(3, 2), imb)
+      .input('amr', sql.Decimal(3, 2), amr)
       .query(`
         INSERT INTO FichaMedica (cedula, tipo_sangre, peso, altura, diabetes, hipertension, fracturas, hernias, convulsiones, alergias, medicamentos,
-          enfermedades, observaciones, discapacidad_fisica, atencion_especial, calendario_vacunacion_completo, imc, grasa_corporal, agua, musculo_esqueletico
-        ) VALUES (
+          enfermedades, observaciones, discapacidad_fisica, atencion_especial, calendario_vacunacion_completo, imc, grasa_corporal, agua, musculo_esqueletico,
+          oseo, sal_inorganica, proteinas, grasa_subcutanea, masa_magra, somatotipo, imb, amr) 
+          VALUES (
           @cedula, @tipo_sangre, @peso, @altura, @diabetes, @hipertension, @fracturas, @hernias, @convulsiones, @alergias, @medicamentos, @enfermedades,
-          @observaciones, @discapacidad_fisica, @atencion_especial, @calendario_vacunacion_completo, @imc, @grasa_corporal, @agua, @musculo_esqueletico
-        )
+          @observaciones, @discapacidad_fisica, @atencion_especial, @calendario_vacunacion_completo, @imc, @grasa_corporal, @agua, @musculo_esqueletico,
+          @oseo, @sal_inorganica, @proteinas, @grasa_subcutanea, @masa_magra, @somatotipo, @imb, @amr)
       `);
 
     return result;
