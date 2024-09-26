@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import axios from 'axios';
 import CrearFichaMedica from './CrearFichaMedica'; // Asegúrate de que la ruta sea correcta
 import FichaMedica from './FichaMedica';
-import '../styles/BuscarSocio.css';
+import '../styles/buscarSocio.css';
 
 const BuscarSocio = () => {
   const [cedula, setCedula] = useState('');
