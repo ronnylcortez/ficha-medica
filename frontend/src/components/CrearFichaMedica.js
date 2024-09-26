@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import '../styles/CrearFichaMedica.css'; // Asegúrate de que la ruta sea correcta
 
-const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
+const CrearFichaMedica = ({ cedula, setShowCreateFicha, socio }) => {
   const [tipoSangre, setTipoSangre] = useState('');
   const [peso, setPeso] = useState('');
   const [altura, setAltura] = useState('');
@@ -18,18 +18,18 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
   const [discapacidadFisica, setDiscapacidadFisica] = useState(false);
   const [atencionEspecial, setAtencionEspecial] = useState(false);
   const [calendarioVacunacionCompleto, setCalendarioVacunacionCompleto] = useState(false);
-  const [imc, setImc] = useState('');
-  const [grasaCorporal, setGrasaCorporal] = useState('');
-  const [agua, setAgua] = useState('');
-  const [musculoEsqueletico, setMusculoEsqueletico] = useState('');
-  const [oseo, setOseo] = useState('');
-  const [salInorganica, setSalInorganica] = useState('');
-  const [proteinas, setProteinas] = useState('');
-  const [grasaSubcutanea, setGrasaSubcutanea] = useState('');
-  const [masaMagra, setMasaMagra] = useState('');
-  const [somatotipo, setSomatotipo] = useState('');
-  const [imb, setImb] = useState('');
-  const [amr, setAmr] = useState('');
+  const [imc, setImc] = useState(null);
+  const [grasaCorporal, setGrasaCorporal] = useState(null);
+  const [agua, setAgua] =  useState(null);
+  const [musculoEsqueletico, setMusculoEsqueletico] =  useState(null);
+  const [oseo, setOseo] =  useState(null);
+  const [salInorganica, setSalInorganica] =  useState(null);
+  const [proteinas, setProteinas] =  useState(null);
+  const [grasaSubcutanea, setGrasaSubcutanea] =  useState(null);
+  const [masaMagra, setMasaMagra] = useState(null);
+  const [somatotipo, setSomatotipo] =  useState('');
+  const [imb, setImb] =  useState(null);
+  const [amr, setAmr] =  useState(null);
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
@@ -164,10 +164,11 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
   };
 
   return (
-    <div className="ficha-medica">
-      <h3 className="ficha-medica__titulo">Crear Ficha Médica</h3>
-      <form className="ficha-medica__form" onSubmit={handleSubmit}>
-  
+    <div className="crear-ficha-medica">
+      <h2 className='crear-ficha-medica__titulo'>CREAR FICHA MÉDICA</h2>
+      <form className="crear-ficha-medica__form" onSubmit={handleSubmit}>
+      <p>{socio.nombres}</p>
+      <p>{socio.cedula}</p>
         {/* Información Básica */}
         <section className="crear-ficha-medica__seccion crear-ficha-medica__seccion--basica">
           <h4 className="crear-ficha-medica__subtitulo">Información Básica</h4>
@@ -186,7 +187,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
           </div>
   
           <div className="crear-ficha-medica__campo">
-            <label htmlFor="peso" className="crear-ficha-medica__label">Peso (kg):</label>
+            <label htmlFor="peso" className="crear-ficha-medica__label">Peso(kg):</label>
             <input
               type="number"
               id="peso"
@@ -199,7 +200,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
           </div>
   
           <div className="crear-ficha-medica__campo">
-            <label htmlFor="altura" className="crear-ficha-medica__label">Altura (m):</label>
+            <label htmlFor="altura" className="crear-ficha-medica__label">Altura(m):</label>
             <input
               type="number"
               id="altura"
@@ -379,7 +380,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id="imc"
               value={imc}
               onChange={handleChange}
-              placeholder="Ingrese IMC"
+              placeholder="Ingrese el valor"
               className="crear-ficha-medica__input"
             />
           </div>
@@ -390,7 +391,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='grasa_corporal'
               value={grasaCorporal}
               onChange={handleChange}
-              placeholder='Ingrese IMC'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>
@@ -401,7 +402,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='agua'
               value={agua}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>
@@ -413,7 +414,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='musculo_esqueletico'
               value={musculoEsqueletico}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>
@@ -425,7 +426,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='oseo'
               value={oseo}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>
@@ -449,7 +450,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='proteinas'
               value={proteinas}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>
@@ -461,19 +462,19 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='grasa_subcutanea'
               value={grasaSubcutanea}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>
 
           <div className="crear-ficha-medica__campo">
-            <label className="crear-ficha-medica__label">Masa magra:</label>
+            <label className="crear-ficha-medica__label">Masa magra(lb):</label>
             <input
               type='number'
               id='masa_magra'
               value={masaMagra}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>
@@ -485,7 +486,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='somatotipo'
               value={somatotipo}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el texto'
               className="crear-ficha-medica__input"
             />
           </div>
@@ -497,7 +498,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='imb'
               value={imb}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>
@@ -509,7 +510,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha }) => {
               id='amr'
               value={amr}
               onChange={handleChange}
-              placeholder='Ingrese el porcentaje'
+              placeholder='Ingrese el valor'
               className="crear-ficha-medica__input"
             />
           </div>

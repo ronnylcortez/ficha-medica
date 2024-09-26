@@ -86,7 +86,7 @@ const BuscarSocio = () => {
       {error && <p className="form__error">{error}</p>}
 
       {socio && showCreateFicha && (
-        <CrearFichaMedica cedula={socio.cedula} setShowCreateFicha={setShowCreateFicha} />
+        <CrearFichaMedica cedula={socio.cedula} setShowCreateFicha={setShowCreateFicha} socio={socio} />
       )}
 
       {socio && fichaMedica && (

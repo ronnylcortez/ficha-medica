@@ -53,15 +53,18 @@
 }
 
 .ficha-medica__label {
+  display: flex;
   flex: 0 0 15%; /* Ocupará el 20% del espacio disponible */
   text-align: left;
   font-weight: bold; /* Negrita para el label */
   margin-right: 5px;
+  align-items: center;
 }
 
 .ficha-medica__value {
+  display: flex;
   flex: 1; /* Ocupará el espacio restante */
   text-align: left;
   background-color: #FFFFFF; /* Color de fondo para el value */
-
+  align-items: center;
 }

@@ -10,6 +10,7 @@
 .crear-ficha-medica__titulo {
   font-size: 24px;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .crear-ficha-medica__form {
@@ -34,7 +35,7 @@
 .crear-ficha-medica__campo {
   margin-bottom: 15px;
   display: flex;
-
+  margin-bottom: 2px; /* Más espacio entre los items */
 }
 
 .crear-ficha-medica__label {
@@ -42,13 +43,20 @@
   flex: 0 0 15%;
   margin-right: 5px;
   font-weight: bold;
+  padding: 10px;
+
+}
+
+.crear-ficha-medica__label,
+.crear-ficha-medica__input,
+.crear-ficha-medica__checkbox {
+  padding: 10px;
+  border-radius: 4px;
 }
 
 .crear-ficha-medica__input {
   width: 100%;
-  padding: 8px;
   border: 1px solid #ccc;
-  border-radius: 4px;
   font-size: 16px;
 }
 
@@ -74,8 +82,11 @@
   cursor: pointer;
   color: white;
   background-color: #0A66C2;
-  width: auto;
+  width: 200px;
   height: 50px;
+  margin: auto;
+  display: block;
+  font-size: 16px;
 }
 .crear-ficha-medica__btn:hover {
   background-color: #0056b3;
