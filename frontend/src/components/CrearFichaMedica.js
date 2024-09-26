@@ -187,13 +187,13 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha, socio }) => {
           </div>
   
           <div className="crear-ficha-medica__campo">
-            <label htmlFor="peso" className="crear-ficha-medica__label">Peso(kg):</label>
+            <label htmlFor="peso" className="crear-ficha-medica__label">Peso(lb):</label>
             <input
               type="number"
               id="peso"
               value={peso}
               onChange={handleChange}
-              placeholder="Ingrese peso"
+              placeholder="Ingrese el peso. (Ejm: 165.2)"
               className="crear-ficha-medica__input"
               required
             />
@@ -206,7 +206,7 @@ const CrearFichaMedica = ({ cedula, setShowCreateFicha, socio }) => {
               id="altura"
               value={altura}
               onChange={handleChange}
-              placeholder="Ingrese altura"
+              placeholder="Ingrese altura. (Ejm: 1.65)"
               className="crear-ficha-medica__input"
               required
             />
