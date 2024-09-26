@@ -68,3 +68,13 @@
   background-color: #FFFFFF; /* Color de fondo para el value */
   align-items: center;
 }
+
+.ficha-medica__update-button {
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: white;
+  background-color: #0A66C2;
+  height: 50px; 
+  font-size: 16px;
+}

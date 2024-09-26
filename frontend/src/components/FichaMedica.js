@@ -89,8 +89,14 @@ const FichaMedica = ({ fichaMedica, socio }) => {
               />
             </li>
             <li className='ficha-medica__item'>
-              <div className='ficha-medica__label'>Altura (m)</div>
-              <div className='ficha-medica__value'>{fichaMedica.altura}</div>
+              <div className='ficha-medica__label'>Altura(m)</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='altura'
+                value={formData.altura}
+                onChange={handleChange}
+              />
             </li>
           </ul>
 
@@ -163,51 +169,123 @@ const FichaMedica = ({ fichaMedica, socio }) => {
           <ul className='ficha-medica__content'>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>IMC</div>
-              <div className='ficha-medica__value'>{fichaMedica.imc}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='imc'
+                value={formData.imc}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Grasa Corporal(%)</div>
-              <div className='ficha-medica__value'>{fichaMedica.grasa_corporal}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='imc'
+                value={formData.grasa_corporal}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Agua(%)</div>
-              <div className='ficha-medica__value'>{fichaMedica.agua}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='agua'
+                value={formData.agua}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Músculo Esquelético(%)</div>
-              <div className='ficha-medica__value'>{fichaMedica.musculo_esqueletico}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='musculo_esqueletico'
+                value={formData.musculo_esqueletico}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Óseo(%)</div>
-              <div className='ficha-medica__value'>{fichaMedica.oseo}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='oseo'
+                value={formData.oseo}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Sal Inorgánica(lb)</div>
-              <div className='ficha-medica__value'>{fichaMedica.sal_inorganica}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='sal_inorganica'
+                value={formData.sal_inorganica}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Proteínas(%)</div>
-              <div className='ficha-medica__value'>{fichaMedica.proteinas}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='proteinas'
+                value={formData.proteinas}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Grasa subcutánea(lb)</div>
-              <div className='ficha-medica__value'>{fichaMedica.grasa_subcutanea}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='grasa_subcutanea'
+                value={formData.grasa_subcutanea}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Masa magra(lb)</div>
-              <div className='ficha-medica__value'>{fichaMedica.masa_magra}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='masa_magra'
+                value={formData.masa_magra}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Somatotipo</div>
-              <div className='ficha-medica__value'>{fichaMedica.somatotipo}</div>
+              <input 
+                className='ficha-medica__value'
+                type='text'
+                name='somatotipo'
+                value={formData.somatotipo}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>IMB</div>
-              <div className='ficha-medica__value'>{fichaMedica.imb}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='imb'
+                value={formData.imb}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>AMR</div>
-              <div className='ficha-medica__value'>{fichaMedica.amr}</div>
+              <input 
+                className='ficha-medica__value'
+                type='number'
+                name='amr'
+                value={formData.amr}
+                onChange={handleChange}
+              />
             </li>
           </ul>
         </div>
