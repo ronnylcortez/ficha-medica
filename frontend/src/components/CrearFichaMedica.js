@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles/CrearFichaMedica.css'; // Asegúrate de que la ruta sea correcta
+import '../styles/crearFichaMedica.css'; // Asegúrate de que la ruta sea correcta
 
 const CrearFichaMedica = ({ cedula, setShowCreateFicha, socio }) => {
   const [tipoSangre, setTipoSangre] = useState('');

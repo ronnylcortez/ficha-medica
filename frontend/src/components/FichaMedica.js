@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import '../styles/FichaMedica.css';
+import '../styles/fichaMedica.css';
 
 const FichaMedica = ({ fichaMedica, socio }) => {
   // Estado para manejar los datos de la ficha médica
