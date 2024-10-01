@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/fichaMedica.css';
 
 const FichaMedica = ({ fichaMedica, socio }) => {
   // Estado para manejar los datos de la ficha médica
   const [formData, setFormData] = useState(fichaMedica);
+  const [factoresActividad, setFactoresActividad] = useState([]);
+
+  useEffect(() => {
+    setFormData(fichaMedica);
+  }, [fichaMedica]);
 
   // Manejo de cambios en los inputs
   const handleChange = (e) => {
@@ -24,6 +29,15 @@ const FichaMedica = ({ fichaMedica, socio }) => {
       console.error('Error al actualizar la ficha médica:', error);
     }
   };
+
+  useEffect(() => {
+    const fetchFactoresActividad = async () => {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/factores-actividad`);
+      setFactoresActividad(response.data);
+    }
+
+    fetchFactoresActividad();
+  }, [])
 
   return (
     <div className='ficha-medica'>
@@ -98,6 +112,19 @@ const FichaMedica = ({ fichaMedica, socio }) => {
                 onChange={handleChange}
               />
             </li>
+            <li className='ficha-medica__item'>
+              <div className='ficha-medica__label'>Factor de actividad</div>
+              <select 
+                className='ficha-medica__value'
+                name='factor_actividad'
+                value={formData.factor_actividad || ''}
+                onChange={handleChange}
+              >
+                {factoresActividad.map(factor => (
+                  <option key={factor.id} value={factor.nombre}>{factor.nombre} - {factor.descripcion}</option>
+                ))}
+              </select>
+            </li>
           </ul>
 
           {/* Enfermedades y padecimientos */}
@@ -130,20 +157,43 @@ const FichaMedica = ({ fichaMedica, socio }) => {
           <ul className='ficha-medica__content'>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Alergias</div>
-              <div className='ficha-medica__value'>{fichaMedica.alergias}</div>
+              <input 
+                className='ficha-medica__value'
+                type='text'
+                name='alergias'
+                value={formData.alergias}
+                onChange={handleChange}
+              />
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Medicamentos</div>
-              <div className='ficha-medica__value'>{fichaMedica.medicamentos}</div>
+              <input 
+                className='ficha-medica__value'
+                type='text'
+                name='medicamentos'
+                value={formData.medicamentos}
+                onChange={handleChange}
+              />            
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Otras enfermedades</div>
-              <div className='ficha-medica__value'>{fichaMedica.enfermedades}</div>
-            </li>
+              <input 
+                className='ficha-medica__value'
+                type='text'
+                name='enfermedades'
+                value={formData.enfermedades}
+                onChange={handleChange}
+              />             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Observaciones</div>
-              <div className='ficha-medica__value'>{fichaMedica.observaciones}</div>
-            </li>
+              <input 
+                className='ficha-medica__value'
+                type='text'
+                name='observaciones'
+                value={formData.observaciones}
+                onChange={handleChange}
+              />             
+              </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Calendario de Vacunación Completo</div>
               <div className='ficha-medica__value'>{fichaMedica.calendarioVacunacionCompleto ? 'Sí' : 'No'}</div>
@@ -165,11 +215,13 @@ const FichaMedica = ({ fichaMedica, socio }) => {
 
 
           {/* Informe de aplicación */}
-          <h4 className='ficha-medica__subsection'>INFORME APLICACIÓN MÓVIL</h4>
+          <h4 className='ficha-medica__subsection'>INFORME NUTRICIÓN</h4>
           <ul className='ficha-medica__content'>
             <li className='ficha-medica__item'>
-              <div className='ficha-medica__label'>IMC</div>
+              <div className='ficha-medica__label'>Índice de masa corporal</div>
               <div className='ficha-medica__value'>{fichaMedica.imc}</div>
+               <div className='ficha-medica__label'>Condición </div>
+               <div className='ficha-medica__value'>{fichaMedica.condicion}</div>
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Grasa Corporal(%)</div>
@@ -204,11 +256,11 @@ const FichaMedica = ({ fichaMedica, socio }) => {
               <div className='ficha-medica__value'>{fichaMedica.masa_magra}</div>
             </li>
             <li className='ficha-medica__item'>
-              <div className='ficha-medica__label'>IMB</div>
-              <div className='ficha-medica__value'>{fichaMedica.imb}</div>
+              <div className='ficha-medica__label'>Índice de metabolismo basal (calorias/dia)</div>
+              <div className='ficha-medica__value'>{fichaMedica.bmr}</div>
             </li>
             <li className='ficha-medica__item'>
-              <div className='ficha-medica__label'>AMR</div>
+              <div className='ficha-medica__label'>AMR (calorias/dia)</div>
               <div className='ficha-medica__value'>{fichaMedica.amr}</div>
             </li>
           </ul>
