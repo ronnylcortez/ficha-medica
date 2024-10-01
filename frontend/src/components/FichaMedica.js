@@ -80,7 +80,7 @@ const FichaMedica = ({ fichaMedica, socio }) => {
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Peso (lb)</div>
-              <input
+              <input 
                 className='ficha-medica__value'
                 type='number'
                 name='peso'
@@ -90,7 +90,7 @@ const FichaMedica = ({ fichaMedica, socio }) => {
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Altura(m)</div>
-              <input
+              <input 
                 className='ficha-medica__value'
                 type='number'
                 name='altura'
@@ -163,16 +163,13 @@ const FichaMedica = ({ fichaMedica, socio }) => {
             </li>
           </ul>
 
+
           {/* Informe de aplicación */}
           <h4 className='ficha-medica__subsection'>INFORME APLICACIÓN MÓVIL</h4>
           <ul className='ficha-medica__content'>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>IMC</div>
               <div className='ficha-medica__value'>{fichaMedica.imc}</div>
-
-              <div className='ficha-medica__label'>Condición</div>
-              <div className='ficha-medica__value'>{fichaMedica.condicion}</div>
-
             </li>
             <li className='ficha-medica__item'>
               <div className='ficha-medica__label'>Grasa Corporal(%)</div>
@@ -183,10 +180,37 @@ const FichaMedica = ({ fichaMedica, socio }) => {
               <div className='ficha-medica__value'>{fichaMedica.agua}</div>
             </li>
             <li className='ficha-medica__item'>
-              <div className='ficha-medica__label'>Músqulo Esquelético(%)</div>
+              <div className='ficha-medica__label'>Músculo Esquelético(%)</div>
               <div className='ficha-medica__value'>{fichaMedica.musculo_esqueletico}</div>
             </li>
-      
+            <li className='ficha-medica__item'>
+              <div className='ficha-medica__label'>Óseo(%)</div>
+              <div className='ficha-medica__value'>{fichaMedica.oseo}</div>
+            </li>
+            <li className='ficha-medica__item'>
+              <div className='ficha-medica__label'>Sal Inorgánica(lb)</div>
+              <div className='ficha-medica__value'>{fichaMedica.sal_inorganica}</div>
+            </li>
+            <li className='ficha-medica__item'>
+              <div className='ficha-medica__label'>Proteínas(%)</div>
+              <div className='ficha-medica__value'>{fichaMedica.proteinas}</div>
+            </li>
+            <li className='ficha-medica__item'>
+              <div className='ficha-medica__label'>Grasa subcutánea(lb)</div>
+              <div className='ficha-medica__value'>{fichaMedica.grasa_subcutanea}</div>
+            </li>
+            <li className='ficha-medica__item'>
+              <div className='ficha-medica__label'>Masa magra(lb)</div>
+              <div className='ficha-medica__value'>{fichaMedica.masa_magra}</div>
+            </li>
+            <li className='ficha-medica__item'>
+              <div className='ficha-medica__label'>IMB</div>
+              <div className='ficha-medica__value'>{fichaMedica.imb}</div>
+            </li>
+            <li className='ficha-medica__item'>
+              <div className='ficha-medica__label'>AMR</div>
+              <div className='ficha-medica__value'>{fichaMedica.amr}</div>
+            </li>
           </ul>
         </div>
         {/* Botón de actualización */}

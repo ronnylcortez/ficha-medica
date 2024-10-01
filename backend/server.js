@@ -6,7 +6,6 @@ const cors = require('cors');
 const app = express();
 const socioRoutes = require('./routes/socioRoutes');
 const fichaMedicaRoutes = require('./routes/fichaMedicaRoutes');
-const tiposSangreRoutes = require('./routes/tiposSangreRoutes');
 const port = 3001;
 
 // Configura CORS
@@ -22,8 +21,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', socioRoutes);
+
 app.use('/api', fichaMedicaRoutes);
-app.use('/api', tiposSangreRoutes);
 
 // Iniciar el servidor
 app.listen(port, () => {
