@@ -131,6 +131,15 @@ const actualizarFichaMedica = async (cedula, data) => {
             observaciones = @observaciones
         WHERE cedula = @cedula
       `);
+      await pool.request()
+      .input('cedula', sql.NVarChar, cedula) // Usar la misma cédula para actualizar el registro
+      .input('fecha_actualizacion', sql.DateTime, fechaActualizacion)
+      .query(`
+              UPDATE FichaMedica 
+              SET fecha_actualizacion = @fecha_actualizacion
+              WHERE cedula = @cedula
+            `);
+    return result;
   }
   catch (error) {
     console.error('Error al actualizar la ficha médica:', error);
