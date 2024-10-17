@@ -8,7 +8,7 @@ const socioRoutes = require('./routes/socioRoutes');
 const fichaMedicaRoutes = require('./routes/fichaMedicaRoutes');
 const tiposSangreRouter = require('./routes/tiposSangreRoutes');
 const factoresActividadRouter = require('./routes/factoresActividadRoutes');
-const port = 3001;
+const port = 10000;
 
 // Configura CORS
 app.use(cors());
