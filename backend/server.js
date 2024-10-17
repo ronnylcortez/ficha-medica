@@ -16,7 +16,7 @@ const port = process.env.PORT || 10000;
 // Configuración de CORS
 const allowedOrigins = [
   'http://localhost:3000', // Desarrollo en localhost
-  'https://ficha-medica-ugnu.onrender.com/' // Producción
+  'https://ficha-medica-ugnu.onrender.com' // Producción
 ];
 
 app.use(cors({
